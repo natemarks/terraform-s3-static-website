@@ -1,6 +1,6 @@
-domain_name = "yourdomain.com"
-bucket_name = "yourdomain.com"
+domain_name = "natemarks.click"
+bucket_name = "deleteme-natemarks.click"
 
-common_tags = {
-  Project = "yourdomain"
+custom_tags = {
+  Project = "natemarks.click"
 }

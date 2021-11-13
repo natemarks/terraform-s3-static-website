@@ -16,7 +16,13 @@ resource "aws_s3_bucket" "www_bucket" {
     error_document = "404.html"
   }
 
-  tags = var.common_tags
+  tags = merge(
+    {
+      terraform   = "true"
+      terragrunt  = "true"
+    },
+    var.custom_tags,
+  )
 }
 
 # S3 bucket for redirecting non-www to www.
@@ -29,5 +35,11 @@ resource "aws_s3_bucket" "root_bucket" {
     redirect_all_requests_to = "https://www.${var.domain_name}"
   }
 
-  tags = var.common_tags
+  tags = merge(
+    {
+      terraform   = "true"
+      terragrunt  = "true"
+    },
+    var.custom_tags,
+  )
 }

@@ -57,7 +57,13 @@ resource "aws_cloudfront_distribution" "www_s3_distribution" {
     minimum_protocol_version = "TLSv1.1_2016"
   }
 
-  tags = var.common_tags
+  tags = merge(
+    {
+      terraform   = "true"
+      terragrunt  = "true"
+    },
+    var.custom_tags,
+  )
 }
 
 # Cloudfront S3 for redirect to www.
@@ -111,5 +117,11 @@ resource "aws_cloudfront_distribution" "root_s3_distribution" {
     minimum_protocol_version = "TLSv1.1_2016"
   }
 
-  tags = var.common_tags
+  tags = merge(
+    {
+      terraform   = "true"
+      terragrunt  = "true"
+    },
+    var.custom_tags,
+  )
 }
